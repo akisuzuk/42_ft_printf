@@ -30,6 +30,9 @@ int	ft_printf(const char *format, ...)
 	const char	*p;
 	int			i;
 
+	p = (char *)var_arg(arg, char *);
+	//d = (int)var_arg(arg, int);
+	//c = (char)var_arg(arg, int);	// 読み込みは4バイトずつなのでcharを引っ張ってくる時もargの引数はintでずらした箇所を参照する
 	p = format;
 	// 第一引数を読み込んで出力の枠を確定
 	while (p[i] != '\0')
@@ -41,7 +44,7 @@ int	ft_printf(const char *format, ...)
 
 	// 第二引数以降を拾っていって格納してまとめて表示
 
-	
+
 
 
 	va_end (arg); // va_startとセット。可変長引数の処理を完了
