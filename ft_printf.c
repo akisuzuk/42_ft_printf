@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
+
 //--------------------------------------
 // 課題ではとりあえず
 // %c, %s, %p, %d, %i, %u, %x, %X, %%
@@ -25,10 +28,12 @@ int	ft_printf(const char *format, ...);
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	arg;	// argがこれ以降のva_startとかva_listの第一引数になる
-	va_start(arg, format); // 第二引数には、プロトタイプ宣言の第一引数を設定
 	const char	*p;
 	int			i;
+	va_list	arg;	// argがこれ以降のva_startとかva_listの第一引数になる
+	va_start(arg, format); // 第二引数には、プロトタイプ宣言の第一引数を設定
+
+	ret = printf()
 
 	p = format;
 	// 第一引数を読み込んで出力の枠を確定
