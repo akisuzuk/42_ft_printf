@@ -62,7 +62,6 @@ int		ft_printf(const char *format, ...)
 	i = 0;
 	if (format == NULL)
 		i = -1;
-	i = 0;
 	while (i >= 0 && *format)
 	{
 		p = format;
