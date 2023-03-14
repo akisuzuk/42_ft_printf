@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-
 //--------------------------------------
 // 課題ではとりあえず
 // %c, %s, %p, %d, %i, %u, %x, %X, %%
 // に対応させられればok
+// 出力の書式は
+// %[フラグ][最小フィールド幅].[精度][長さ修飾子][変換指定子]
+// で示されるけど、今回長さ修飾子は不要
+// フラグは-と0と*だけ対応すればok
 //--------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-//include "libftprintf.a"
 #include <stdarg.h>
+//include "libftprintf.a"
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
 void	ft_print_str(const char **p, const char **format, int *i);
@@ -30,14 +31,14 @@ int		ft_printf(const char *format, ...);
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 {
-	if()
-	{
-
-	}
-	else
-	{
-
-	}
+//	if()
+//	{
+//
+//	}
+//	else
+//	{
+//
+//	}
 }
 
 void	ft_print_str(const char **p, const char **format, int *i)
@@ -57,8 +58,8 @@ int		ft_printf(const char *format, ...)
 	int			i;
 	va_list		arg;	// argがこれ以降のva_startとかva_listの第一引数になる
 
-	i = 0;
 	va_start(arg, format); // 第二引数には、プロトタイプ宣言の第一引数を設定
+	i = 0;
 	if (format == NULL)
 		i = -1;
 	i = 0;
@@ -70,6 +71,7 @@ int		ft_printf(const char *format, ...)
 		else
 			//return (0);
 			ft_proc_per(&p, &format, &i, &arg);
+		format++;
 	}
 
 	// 第二引数以降を拾っていって格納してまとめて表示

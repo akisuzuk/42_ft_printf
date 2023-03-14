@@ -6,28 +6,29 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/06 21:07:04 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:32:28 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <math.h>
-// #include <climits>
-#include <limits.h>
-#include <stdbool.h>
-#include <stdarg.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <math.h>
+# include <climits>
+# include <limits.h>
+# include <stdbool.h>
+# include <stdarg.h>
 
-
-
-
-
-
+typedef struct s_stock_str
+{
+	int				size;
+	char			*str;
+	char			*copy;
+}					t_stock_str;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
