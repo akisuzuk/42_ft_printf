@@ -19,10 +19,8 @@
 // で示されるけど、今回長さ修飾子は不要
 // フラグは-と0と*だけ対応すればok
 //--------------------------------------
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
+
+#include "ft_printf.h"
 //include "libftprintf.a"
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
@@ -31,14 +29,9 @@ int		ft_printf(const char *format, ...);
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 {
-//	if()
-//	{
-//
-//	}
-//	else
-//	{
-//
-//	}
+	int		num;
+	t_flag	info;
+
 }
 
 void	ft_print_str(const char **p, const char **format, int *i)
@@ -54,9 +47,9 @@ void	ft_print_str(const char **p, const char **format, int *i)
 // それを可変朝変数p = (char *)var_arg(arg, char *);と絡めて出力するのを実装していく
 int		ft_printf(const char *format, ...)
 {
+	va_list		arg;	// argがこれ以降のva_startとかva_listの第一引数になる
 	const char	*p;
 	int			i;
-	va_list		arg;	// argがこれ以降のva_startとかva_listの第一引数になる
 
 	va_start(arg, format); // 第二引数には、プロトタイプ宣言の第一引数を設定
 	i = 0;
@@ -68,7 +61,6 @@ int		ft_printf(const char *format, ...)
 		if (*p != '%')
 			ft_print_str(&p, &format, &i);
 		else
-			//return (0);
 			ft_proc_per(&p, &format, &i, &arg);
 		format++;
 	}
@@ -107,7 +99,7 @@ int		ft_printf(const char *format, ...)
 
 int main(int argc, char const * argv[])
 {
-	ft_printf("xxx%dyyy%c", "def", "ghi");
+	ft_printf("xxx%dyyy%c", 3, "def");
 	//printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
 	//ft_printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
 	return 0;

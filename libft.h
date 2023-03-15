@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/14 20:32:28 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/15 23:58:13 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@
 # include <stdbool.h>
 # include <stdarg.h>
 
-typedef struct s_stock_str
+typedef struct s_flag
 {
-	int				size;
-	char			*str;
-	char			*copy;
-}					t_stock_str;
+	int	flag[5];
+	int	field;
+	int	acc;
+	int	modifier;
+	int	specifier;
+	int	putnum;
+	int	putlen;
+	int	copy_acc;
+}					t_flag;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
