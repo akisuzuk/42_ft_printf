@@ -23,15 +23,58 @@
 #include "ft_printf.h"
 //include "libftprintf.a"
 
+int		ft_strchr_order(const char *s, int c);
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
 void	ft_print_str(const char **p, const char **format, int *i);
 int		ft_printf(const char *format, ...);
+
+// 終端文字はサーチしなくてok
+int		ft_strchr_order(const char *s, int c)
+{
+	char	char_c;
+	int		order;
+
+	char_c = (char)c;
+	order = 0;
+	while (s[order])
+	{
+		if (s[order] == char_c)
+			return (order);
+		order++;
+	}
+	//if (char_c == '\0' && *s == char_c)
+	//	return ((char *)s);
+	return (-1);
+}
+
+void	ft_init_flag(t_flag *s, int i)
+{
+	s->flag[0] = 0;
+	s->flag[1] = 0;
+	s->flag[2] = 0;
+	//s->flag[3] = 0;
+	//s->flag[4] = 0;
+	s->field = -1;
+	s->acc = -1;
+	//s->modifier = -1;
+	s->specifier = -1;
+	s->putnum = (i < 0 ? 0 : i);
+	s->putlen = 0;
+}
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 {
 	int		num;
 	t_flag	info;
 
+	(*format)++;
+	ft_init_flag(&info, *i);
+	// フラグがあるなら%の後にすぐ出てくるから、num >= 0じゃなかったら即刻ループ終了か。頭良い
+	while ((num = ft_strchr_order("-0*", **format)) >= 0)
+	{
+		info.flag[num] = 1;
+		(*format)++;
+	}
 }
 
 void	ft_print_str(const char **p, const char **format, int *i)
@@ -59,7 +102,7 @@ int		ft_printf(const char *format, ...)
 	{
 		p = format;
 		if (*p != '%')
-			ft_print_str(&p, &format, &i);
+			ft_print_str(&p, &format, &i);  // あれっなんでポインタにアドレスつけてる？
 		else
 			ft_proc_per(&p, &format, &i, &arg);
 		format++;

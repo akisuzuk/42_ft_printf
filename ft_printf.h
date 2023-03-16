@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/16 00:01:30 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:46:46 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 
 typedef struct s_flag
 {
-	int	flag[5];
+	int	flag[3]; // ボーナスありなら5
 	int	field;
 	int	acc;
-	int	modifier;
+	//int	modifier;  // ボーナスありなら長さ修飾子も解放
 	int	specifier;
 	int	putnum;
 	int	putlen;
