@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <XXX>                             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/15 23:58:13 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/10 00:54:02 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,10 @@
 # include <unistd.h>
 # include <string.h>
 # include <math.h>
-# include <climits>
+// #include <climits>
 # include <limits.h>
 # include <stdbool.h>
 # include <stdarg.h>
-
-typedef struct s_flag
-{
-	int	flag[5];
-	int	field;
-	int	acc;
-	int	modifier;
-	int	specifier;
-	int	putnum;
-	int	putlen;
-	int	copy_acc;
-}					t_flag;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

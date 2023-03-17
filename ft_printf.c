@@ -23,10 +23,39 @@
 #include "ft_printf.h"
 //include "libftprintf.a"
 
+int		ft_isdigit(int c);	// ライブラリ使うとはいえプロトタイプ宣言は要るっぽい
 int		ft_strchr_order(const char *s, int c);
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
 void	ft_print_str(const char **p, const char **format, int *i);
 int		ft_printf(const char *format, ...);
+
+int	ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info)
+{
+	int		num;
+
+	num = -1;
+	if (**format == '*')
+	{
+		num = va_arg(*arg, int);
+		if (num < 0 && !mode) // フィールド幅判定の時はmode=0なのでこのif文は回避
+		{
+			num *= -1;
+			info -> flag[0] = 1; // -フラグだけはformatの中でなく、*の中に格納して参照させることが可能
+		}
+		else if (num < 0)
+			num = -1;
+		(*format)++;
+	}
+	else if (mode || ft_isdigit(**format)) // おーlibft来たね！
+	{
+		num = 0;
+		while (ft_isdigit(**format))
+			num = num * 10 + (*((*format)++) - '0');
+	}
+	return (num);
+}
+
+//---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---
 
 // 終端文字はサーチしなくてok
 int		ft_strchr_order(const char *s, int c)
@@ -69,12 +98,13 @@ void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 
 	(*format)++;
 	ft_init_flag(&info, *i);
-	// フラグがあるなら%の後にすぐ出てくるから、num >= 0じゃなかったら即刻ループ終了か。頭良い
+	// フラグがあるなら%の後にすぐ出てくるから、num >= 0じゃなかったら即刻ループ終了か。SUGEEE
 	while ((num = ft_strchr_order("-0*", **format)) >= 0)
 	{
 		info.flag[num] = 1;
 		(*format)++;
 	}
+	info.field = ft_substr_to_num(format, arg, 0, &info);
 }
 
 void	ft_print_str(const char **p, const char **format, int *i)
