@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/16 23:46:46 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/18 12:45:13 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_flag
 	int	acc;
 	//int	modifier;  // ボーナスありなら長さ修飾子も解放
 	int	specifier;
-	int	putnum;
+	//int	putnum;
 	int	putlen;
-	int	copy_acc;
+	//int	copy_acc;
 }					t_flag;
 
 #endif //__INCLUDE_LIBFT_H__

@@ -18,6 +18,9 @@
 // %[フラグ][最小フィールド幅].[精度][長さ修飾子][変換指定子]
 // で示されるけど、今回長さ修飾子は不要
 // フラグは-と0と*だけ対応すればok
+//
+// ft_substr_to_num関数、よくできてんな。。。普通にすごすぎ
+// 動画05の17:00くらいからのエラー処理も対策
 //--------------------------------------
 
 #include "ft_printf.h"
@@ -29,6 +32,14 @@ void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
 void	ft_print_str(const char **p, const char **format, int *i);
 int		ft_printf(const char *format, ...);
 
+int	output(const char **p, const char **format, va_list *arg, t_flag *info)
+{
+	if (info->specifier == -1)
+		return (ft_non_specifier(p, format, info));
+	(*format)++;
+//---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---
+}
+
 int	ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info)
 {
 	int		num;
@@ -37,7 +48,7 @@ int	ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info)
 	if (**format == '*')
 	{
 		num = va_arg(*arg, int);
-		if (num < 0 && !mode) // フィールド幅判定の時はmode=0なのでこのif文は回避
+		if (num < 0 && !mode) // フィールド幅判定の時はmode=0なのでこのif文は必ず入る。精度の時は入らない
 		{
 			num *= -1;
 			info -> flag[0] = 1; // -フラグだけはformatの中でなく、*の中に格納して参照させることが可能
@@ -55,9 +66,9 @@ int	ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info)
 	return (num);
 }
 
-//---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---
 
 // 終端文字はサーチしなくてok
+// 一応動画05の24分くらいで解説あり
 int		ft_strchr_order(const char *s, int c)
 {
 	char	char_c;
@@ -102,9 +113,24 @@ void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 	while ((num = ft_strchr_order("-0*", **format)) >= 0)
 	{
 		info.flag[num] = 1;
-		(*format)++;
+		(*format)++;	// これ、別に値を参照するわけじゃないからカッコいらないと思うんだが(あとで検証)
 	}
+	// フィールド幅を格納
 	info.field = ft_substr_to_num(format, arg, 0, &info);
+	// 精度を格納
+	if (**format == '.')
+	{
+		(*format)++;
+		info.acc = ft_substr_to_num(format, arg, 1, &info); // あーmodeを0/1でスイッチするんだね。イイネ
+	}
+	// 変換指定子を格納
+	info.specifier = ft_strchr_order("cspdiuxX%", **format);
+	// やっと格納
+	num = output(p, format, arg, &info);
+	// ↓文字数iカウント。とはいえ複雑ではなく、フィールド幅の数字(指定なければ実際に吐き出された文字数)をそのまま足すだけか.
+	//*i += *format - *p;
+	//*i = ((*i == 0 || num >= 0) ? num : *i);
+	*i += num; // あれっ三項演算子使わず普通にこれで良いのでは
 }
 
 void	ft_print_str(const char **p, const char **format, int *i)

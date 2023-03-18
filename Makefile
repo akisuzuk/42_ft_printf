@@ -6,14 +6,14 @@
 #    By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 23:05:50 by akisuzuk          #+#    #+#              #
-#    Updated: 2023/03/17 23:52:22 by akisuzuk         ###   ########.fr        #
+#    Updated: 2023/03/18 09:45:51 by akisuzuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC     := cc
 CFLAGS := -Wall -Wextra -Werror
 
-NAME = libft_printf.a
+NAME = libftprintf.a
 
 # ワイルドカードで一気に書きたいのに2通りの書き方どっちもうまくいかん
 #SRCDIR  = ./srcs
@@ -21,7 +21,8 @@ NAME = libft_printf.a
 
 #SRCs = ./srcs/*.c
 
-SRCS = 	./srcs/ft_isalpha.c \
+SRCS = 	ft_printf.c \
+		./srcs/ft_isalpha.c \
 		./srcs/ft_isdigit.c \
 		./srcs/ft_isalnum.c \
 		./srcs/ft_isascii.c \
