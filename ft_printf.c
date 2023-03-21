@@ -18,90 +18,60 @@
 // %[フラグ][最小フィールド幅].[精度][長さ修飾子][変換指定子]
 // で示されるけど、今回長さ修飾子は不要
 // フラグは-と0と*だけ対応すればok
+// ↑と思ってたら解説動画の時期から問題変わっててフラグの対応不要になってたわ
+// 一応、解説動画だと"#0- +"の順番でしたね
+// あと問題文にピリオドのプラグあるけど、そんなのなくね？
 //
 // ft_substr_to_num関数、よくできてんな。。。普通にすごすぎ
 // 動画05の17:00くらいからのエラー処理も対策
 // 20230318 動画05 6:00くらいから
+
+// 解説の変換指定子はdiuxXefgcspn% かな？(文字が潰れている。。。)
 //--------------------------------------
 
 #include "ft_printf.h"
 //include "libftprintf.a"
 
 int		ft_isdigit(int c);	// ライブラリ使うとはいえプロトタイプ宣言は要るっぽい
+void	ft_putnbr_fd(int n, int fd);
+
+void	ft_print_percent(t_flag *info);
+int		ft_non_specifier(const char **p, const char **format, t_flag *info);
+int		ft_output(const char **p, const char **format, va_list *arg, t_flag *info);
+int		ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info);
 int		ft_strchr_order(const char *s, int c);
+void	ft_init_flag(t_flag *s, int i);
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
 void	ft_print_str(const char **p, const char **format, int *i);
 int		ft_printf(const char *format, ...);
 
-int	output(const char **p, const char **format, va_list *arg, t_flag *info)
+// di uxX efg c s p n %
+// c s p di uxX %"
+int	ft_output(const char **p, const char **format, va_list *arg, t_flag *info)
 {
 	if (info->specifier == -1)
 		return (ft_non_specifier(p, format, info));
 	(*format)++;
-//---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---KOKOMADE---SUSUNDA---
+	// 変換指定子はcspdiuxX%が左から数字で格納されている
+	// 変換指定子がc(char)かs(string)の場合
+	if (info->specifier == 0)
+		ft_char_print(arg, info);
+	else if (info->specifier == 1)
+		ft_string_print(arg, info);
+	else if (info->specifier == 2)
+		ft_pointer_print(arg, info);
+	else if (info->specifier == 3 || info->specifier == 4)
+		ft_int_print(arg, info);
+	else if (info->specifier >= 5 && info->specifier <= 7)
+		ft_unsigned_print(arg, info);
+	else
+		ft_print_percent(info);
+	// putlenは吐き出した文字数。fieldは全体の長さでなく空白部分の長さ
+	return (info->putlen + info->field);
+
+
 }
 
-int	ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info)
-{
-	int		num;
-
-	num = -1;
-	if (**format == '*')
-	{
-		num = va_arg(*arg, int);
-		if (num < 0 && !mode) // フィールド幅判定の時はmode=0なのでこのif文は必ず入る。精度の時は入らない
-		{
-			num *= -1;
-			info -> flag[0] = 1; // -フラグだけはformatの中でなく、*の中に格納して参照させることが可能
-		}
-		else if (num < 0)
-			num = -1;
-		(*format)++;
-	}
-	else if (mode || ft_isdigit(**format)) // おーlibft来たね！
-	{
-		num = 0;
-		while (ft_isdigit(**format))
-			num = num * 10 + (*((*format)++) - '0');
-	}
-	return (num);
-}
-
-
-// 終端文字はサーチしなくてok
-// 一応動画05の24分くらいで解説あり
-int		ft_strchr_order(const char *s, int c)
-{
-	char	char_c;
-	int		order;
-
-	char_c = (char)c;
-	order = 0;
-	while (s[order])
-	{
-		if (s[order] == char_c)
-			return (order);
-		order++;
-	}
-	//if (char_c == '\0' && *s == char_c)
-	//	return ((char *)s);
-	return (-1);
-}
-
-void	ft_init_flag(t_flag *s, int i)
-{
-	s->flag[0] = 0;
-	s->flag[1] = 0;
-	s->flag[2] = 0;
-	//s->flag[3] = 0;
-	//s->flag[4] = 0;
-	s->field = -1;
-	s->acc = -1;
-	//s->modifier = -1;
-	s->specifier = -1;
-	s->putnum = (i < 0 ? 0 : i);
-	s->putlen = 0;
-}
 
 void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 {
@@ -111,7 +81,8 @@ void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 	(*format)++;
 	ft_init_flag(&info, *i);
 	// フラグがあるなら%の後にすぐ出てくるから、num >= 0じゃなかったら即刻ループ終了か。SUGEEE
-	while ((num = ft_strchr_order("-0*", **format)) >= 0)
+	// 一応、解説動画だと"#0- +"の順番でしたね
+	while ((num = ft_strchr_order("-0", **format)) >= 0)
 	{
 		info.flag[num] = 1;
 		(*format)++;	// これ、別に値を参照するわけじゃないからカッコいらないと思うんだが(あとで検証)
@@ -127,7 +98,7 @@ void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
 	// 変換指定子を格納
 	info.specifier = ft_strchr_order("cspdiuxX%", **format);
 	// やっと格納
-	num = output(p, format, arg, &info);
+	num = ft_output(p, format, arg, &info);
 	// ↓文字数iカウント。とはいえ複雑ではなく、フィールド幅の数字(指定なければ実際に吐き出された文字数)をそのまま足すだけか.
 	//*i += *format - *p;
 	//*i = ((*i == 0 || num >= 0) ? num : *i);
@@ -141,7 +112,6 @@ void	ft_print_str(const char **p, const char **format, int *i)
 	write(1, *p, *format - *p);
 	*i += *format - *p;
 }
-
 
 // 第一引数を%まで読み込む→出力するって流れを作ってみたので、
 // それを可変朝変数p = (char *)var_arg(arg, char *);と絡めて出力するのを実装していく
@@ -164,9 +134,7 @@ int		ft_printf(const char *format, ...)
 			ft_proc_per(&p, &format, &i, &arg);
 		format++;
 	}
-
 	// 第二引数以降を拾っていって格納してまとめて表示
-
 	va_end (arg); // va_startとセット。可変長引数の処理を完了
 	return (i);
 }
