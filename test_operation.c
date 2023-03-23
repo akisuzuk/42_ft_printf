@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 17:39:17 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:51:40 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,29 @@
 //	return (i);
 //}
 
+// 変換指定子比較
+// di uxX efg c s p n %
+// c s p di uxX %"
+
+// フラグ比較
+// "#0- +""
+// "-0"
+
 //int main(int argc, char const * argv[])
 int	main(void)
 {
 	int num;
 
-	num = ft_printf("xxx%dyyy%c", 3, "def");
+	num = ft_printf("char[%c] string [%s] pointer[%p] int[%d] int[%i]\n", 'a', "abc", "ptr", -123, -456);
+	num = ft_printf("decimal[%u] hexa [%x] HEXA[%X] percent[%%]\n", 31, 31, 31);
+	write(1, "\n", 1);
+	// 幅指定なしの場合は実装できてそう(改定後の今の課題なら必須パートはクリアか)
+
+	// 幅指定ありの場合が怪しいのでチェック...
+	num = ft_printf("xxx[%4.3d]yyy[%c]\n", 5, "def");
+	num = ft_printf("xxx[%4.3d]yyy[%c]\n", 12345, "def");
+
+
 
 	//write(1, "\n", 1);
 	//write(1, "num=", 4);

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static	void	ft_print_str(const char **p, const char **fmt, int *i)
+void	ft_print_str(const char **p, const char **fmt, int *i)
 {
 	while (**fmt != '%' && **fmt)
 		(*fmt)++;
@@ -37,7 +37,6 @@ int	ft_printf(const char *fmt, ...)
 			ft_print_str(&p, &fmt, &i);
 		else
 			ft_proc_per(&p, &fmt, &i, &arg);
-		fmt++;
 	}
 	va_end (arg);
 	return (i);

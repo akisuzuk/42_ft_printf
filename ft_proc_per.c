@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:30:32 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 18:14:41 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:52:06 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	ft_proc_per(const char **p, const char **fmt, int *i, va_list *arg)
 	int		num;
 	t_flag	info;
 
-	ft_init_flag(&info);
 	(*fmt)++;
+	ft_init_flag(&info);
 	num = ft_strchr_order("-0", **fmt);
 	while (num >= 0)
 	{

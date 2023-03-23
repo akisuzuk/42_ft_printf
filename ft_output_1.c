@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 18:14:22 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:49:19 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	ft_string_print(va_list *arg, t_flag *info)
 	info->field = ((info->field <= info->putlen) ? 0 : (info->field - info->putlen));
 	if (!info->flag[0])
 		ft_putchar_rep((info->flag[1] ? ' ' : '0'), 1, info->field);
-	n = info->putlen - (info->acc > 0);
-	write(1, &s, n);
+	if (info->putlen > info->acc)
+		n = info->acc;
+	else
+		n = info->putlen;
+	write(1, s, n);
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 }
