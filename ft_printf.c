@@ -30,7 +30,6 @@
 //--------------------------------------
 
 #include "ft_printf.h"
-//include "libftprintf.a"
 
 static	void	ft_print_str(const char **p, const char **format, int *i)
 {
