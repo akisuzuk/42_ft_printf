@@ -6,34 +6,11 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 20:49:19 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:31:27 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_pointer_print(va_list *arg, t_flag *info)
-{
-	unsigned long long	num;
-
-	num = (unsigned long long)va_arg(*arg, void *);
-	if (num == 0)
-	{
-		info->acc = (info->acc == -1 ? 1 : info->acc);
-		info->putlen = 2 + info->acc;
-		info->field = ((info->field <= info->putlen) ? 0 : info->field - info->putlen);
-	}
-	else
-		ft_get_putlen(info, num);
-	if (!info->flag[0] && !info->flag[1])
-		ft_putchar_rep(' ', 1, info->field);
-	write(1, "0x", 2);
-	ft_putchar_rep('0', 1, info->acc + ((info->flag[1] && !info->flag[0]) ? info->field : 0));
-	if (num)
-		ft_putnbr_base((num < 0 ? -1 : 1) * num, "0123456789abcdef");
-	if (info->flag[0])
-		ft_putchar_rep(' ', 1, info->field);
-}
 
 void	ft_string_print(va_list *arg, t_flag *info)
 {
@@ -44,9 +21,17 @@ void	ft_string_print(va_list *arg, t_flag *info)
 	if (info->acc < 0)
 		info->acc = INT_MAX;
 	info->putlen = (int)ft_strlen(s);
-	info->field = ((info->field <= info->putlen) ? 0 : (info->field - info->putlen));
+	if (info->field <= info->putlen)
+		info->field = 0;
+	else
+		info->field -= info->putlen;
 	if (!info->flag[0])
-		ft_putchar_rep((info->flag[1] ? ' ' : '0'), 1, info->field);
+	{
+		if (info->flag[1])
+			ft_putchar_rep(' ', 1, info->field);
+		else
+			ft_putchar_rep('0', 1, info->field);
+	}
 	if (info->putlen > info->acc)
 		n = info->acc;
 	else
@@ -62,7 +47,10 @@ void	ft_char_print(va_list *arg, t_flag *info)
 
 	c = (char)va_arg(*arg, int);
 	info->putlen = 1;
-	info->field = ((info->field <= info->putlen) ? 0 : (info->field - info->putlen));
+	if (info->field <= info->putlen)
+		info->field = 0;
+	else
+		info->field -= info->putlen;
 	if (!info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 	write(1, &c, 1);

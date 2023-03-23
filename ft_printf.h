@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 15:32:55 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 21:34:30 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,19 @@ void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putnbr_base(int nbr, char *base);
 
-void	ft_print_percent(t_flag *info);
-void	ft_unsigned_print(va_list *arg, t_flag *info);
-void	ft_int_print(va_list *arg, t_flag *info);
-
 void	ft_putchar_rep(char c, int fd, int rep);
 int		ft_get_digit(int num, int base);
 void	ft_get_putlen(t_flag *info, int num);
 
+void	ft_print_percent(t_flag *info);
+void	ft_unsigned_print(va_list *arg, t_flag *info);
+void	ft_int_print(va_list *arg, t_flag *info);
+void	ft_pointer_print(va_list *arg, t_flag *info);
+
 int		ft_output(const char **p, const char **fmt, va_list *arg, t_flag *info);
+
 void	ft_proc_per(const char **p, const char **fmt, int *i, va_list *arg);
+
 int		ft_printf(const char *fmt, ...);
 
 #endif //__INCLUDE_LIBFT_H__
