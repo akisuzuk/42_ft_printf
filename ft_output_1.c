@@ -6,13 +6,13 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 15:30:29 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:14:22 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	void	ft_pointer_print(va_list *arg, t_flag *info)
+void	ft_pointer_print(va_list *arg, t_flag *info)
 {
 	unsigned long long	num;
 
@@ -35,7 +35,7 @@ static	void	ft_pointer_print(va_list *arg, t_flag *info)
 		ft_putchar_rep(' ', 1, info->field);
 }
 
-static	void	ft_string_print(va_list *arg, t_flag *info)
+void	ft_string_print(va_list *arg, t_flag *info)
 {
 	char	*s;
 	int		n;
@@ -53,7 +53,7 @@ static	void	ft_string_print(va_list *arg, t_flag *info)
 		ft_putchar_rep(' ', 1, info->field);
 }
 
-static	void	ft_char_print(va_list *arg, t_flag *info)
+void	ft_char_print(va_list *arg, t_flag *info)
 {
 	char	c;
 
@@ -67,7 +67,7 @@ static	void	ft_char_print(va_list *arg, t_flag *info)
 		ft_putchar_rep(' ', 1, info->field);
 }
 
-static	int	ft_non_specifier(const char **p, const char **fmt, t_flag *info)
+int	ft_non_specifier(const char **p, const char **fmt, t_flag *info)
 {
 	if (!**fmt)
 		return (-1);

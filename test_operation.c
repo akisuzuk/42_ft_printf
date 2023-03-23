@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 15:01:04 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:39:17 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,17 @@
 //	return (i);
 //}
 
-int main(int argc, char const * argv[])
+//int main(int argc, char const * argv[])
+int	main(void)
 {
-	ft_printf("xxx%dyyy%c", 3, "def");
+	int num;
+
+	num = ft_printf("xxx%dyyy%c", 3, "def");
+
+	//write(1, "\n", 1);
+	//write(1, "num=", 4);
+	//ft_putnbr_fd(num, 1);
+
 	//printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
 	//ft_printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
 	return 0;

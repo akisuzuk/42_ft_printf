@@ -6,13 +6,13 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:30:32 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 14:17:14 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:14:41 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_substr_to_num(const char **fmt, va_list *arg,
+int	ft_substr_to_num(const char **fmt, va_list *arg,
 							int mode, t_flag *info)
 {
 	int		num;
@@ -39,7 +39,7 @@ static int	ft_substr_to_num(const char **fmt, va_list *arg,
 	return (num);
 }
 
-static int	ft_strchr_order(const char *s, int c)
+int	ft_strchr_order(const char *s, int c)
 {
 	char	char_c;
 	int		order;
@@ -55,7 +55,7 @@ static int	ft_strchr_order(const char *s, int c)
 	return (-1);
 }
 
-static void	ft_init_flag(t_flag *s)
+void	ft_init_flag(t_flag *s)
 {
 	s->flag[0] = 0;
 	s->flag[1] = 0;
@@ -70,8 +70,8 @@ void	ft_proc_per(const char **p, const char **fmt, int *i, va_list *arg)
 	int		num;
 	t_flag	info;
 
-	(*fmt)++;
 	ft_init_flag(&info);
+	(*fmt)++;
 	num = ft_strchr_order("-0", **fmt);
 	while (num >= 0)
 	{
