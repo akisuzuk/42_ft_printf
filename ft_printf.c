@@ -32,80 +32,7 @@
 #include "ft_printf.h"
 //include "libftprintf.a"
 
-int		ft_isdigit(int c);	// ライブラリ使うとはいえプロトタイプ宣言は要るっぽい
-void	ft_putnbr_fd(int n, int fd);
-
-void	ft_print_percent(t_flag *info);
-int		ft_non_specifier(const char **p, const char **format, t_flag *info);
-int		ft_output(const char **p, const char **format, va_list *arg, t_flag *info);
-int		ft_substr_to_num(const char **format, va_list *arg, int mode, t_flag *info);
-int		ft_strchr_order(const char *s, int c);
-void	ft_init_flag(t_flag *s, int i);
-void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg);
-void	ft_print_str(const char **p, const char **format, int *i);
-int		ft_printf(const char *format, ...);
-
-// di uxX efg c s p n %
-// c s p di uxX %"
-int	ft_output(const char **p, const char **format, va_list *arg, t_flag *info)
-{
-	if (info->specifier == -1)
-		return (ft_non_specifier(p, format, info));
-	(*format)++;
-	// 変換指定子はcspdiuxX%が左から数字で格納されている
-	// 変換指定子がc(char)かs(string)の場合
-	if (info->specifier == 0)
-		ft_char_print(arg, info);
-	else if (info->specifier == 1)
-		ft_string_print(arg, info);
-	else if (info->specifier == 2)
-		ft_pointer_print(arg, info);
-	else if (info->specifier == 3 || info->specifier == 4)
-		ft_int_print(arg, info);
-	else if (info->specifier >= 5 && info->specifier <= 7)
-		ft_unsigned_print(arg, info);
-	else
-		ft_print_percent(info);
-	// putlenは吐き出した文字数。fieldは全体の長さでなく空白部分の長さ
-	return (info->putlen + info->field);
-
-
-}
-
-
-void	ft_proc_per(const char **p, const char **format, int *i, va_list *arg)
-{
-	int		num;
-	t_flag	info;
-
-	(*format)++;
-	ft_init_flag(&info, *i);
-	// フラグがあるなら%の後にすぐ出てくるから、num >= 0じゃなかったら即刻ループ終了か。SUGEEE
-	// 一応、解説動画だと"#0- +"の順番でしたね
-	while ((num = ft_strchr_order("-0", **format)) >= 0)
-	{
-		info.flag[num] = 1;
-		(*format)++;	// これ、別に値を参照するわけじゃないからカッコいらないと思うんだが(あとで検証)
-	}
-	// フィールド幅を格納
-	info.field = ft_substr_to_num(format, arg, 0, &info);
-	// 精度を格納
-	if (**format == '.')
-	{
-		(*format)++;
-		info.acc = ft_substr_to_num(format, arg, 1, &info); // あーmodeを0/1でスイッチするんだね。イイネ
-	}
-	// 変換指定子を格納
-	info.specifier = ft_strchr_order("cspdiuxX%", **format);
-	// やっと格納
-	num = ft_output(p, format, arg, &info);
-	// ↓文字数iカウント。とはいえ複雑ではなく、フィールド幅の数字(指定なければ実際に吐き出された文字数)をそのまま足すだけか.
-	//*i += *format - *p;
-	//*i = ((*i == 0 || num >= 0) ? num : *i);
-	*i += num; // あれっ三項演算子使わず普通にこれで良いのでは
-}
-
-void	ft_print_str(const char **p, const char **format, int *i)
+static	void	ft_print_str(const char **p, const char **format, int *i)
 {
 	while (**format != '%' && **format)
 		(*format)++;
@@ -165,16 +92,17 @@ int		ft_printf(const char *format, ...)
 //	return (i);
 //}
 
-int main(int argc, char const * argv[])
-{
-	ft_printf("xxx%dyyy%c", 3, "def");
-	//printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
-	//ft_printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
-	return 0;
-}
-
-
-
-	//p = (char *)var_arg(arg, char *);
-	//d = (int)var_arg(arg, int);
-	//c = (char)var_arg(arg, int);	// 読み込みは4バイトずつなのでcharを引っ張ってくる時もargの引数はintでずらした箇所を参照する
+//int main(int argc, char const * argv[])
+//{
+//	ft_printf("xxx%dyyy%c", 3, "def");
+//	//printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
+//	//ft_printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
+//	return 0;
+//}
+//
+//
+//
+//	//p = (char *)var_arg(arg, char *);
+//	//d = (int)var_arg(arg, int);
+//	//c = (char)var_arg(arg, int);	// 読み込みは4バイトずつなのでcharを引っ張ってくる時もargの引数はintでずらした箇所を参照する
+//

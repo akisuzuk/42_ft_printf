@@ -6,7 +6,7 @@
 #    By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 23:05:50 by akisuzuk          #+#    #+#              #
-#    Updated: 2023/03/18 09:45:51 by akisuzuk         ###   ########.fr        #
+#    Updated: 2023/03/23 11:19:23 by akisuzuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ NAME = libftprintf.a
 #SRCs = ./srcs/*.c
 
 SRCS = 	ft_printf.c \
+		ft_proc_per.c \
+		ft_output.c \
+		ft_putnbr_base.c \
 		./srcs/ft_isalpha.c \
 		./srcs/ft_isdigit.c \
 		./srcs/ft_isalnum.c \

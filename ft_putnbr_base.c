@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 09:37:03 by akisuzuk          #+#    #+#             */
-/*   Updated: 2022/03/27 16:05:24 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:19:52 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	output(int i, char *base, long int *nummem);
-void	ft_putnbr_base(int nbr, char *base);
-
-void	output(int i, char *base, long int *nummem)
+static void	output(int i, char *base, long int *nummem)
 {
 	while (i >= 0)
 	{
