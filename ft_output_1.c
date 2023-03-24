@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 22:31:27 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/24 21:11:38 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_string_print(va_list *arg, t_flag *info)
 	int		n;
 
 	s = (char *)va_arg(*arg, char *);
+	if (s == NULL)
+		s = "(null)";
 	if (info->acc < 0)
 		info->acc = INT_MAX;
 	info->putlen = (int)ft_strlen(s);
