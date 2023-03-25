@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:26:39 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:46:26 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 19:49:04 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	ft_int_print(va_list *arg, t_flag *info)
 		ft_putchar_rep('0', 1, info->acc + info->field);
 	else
 		ft_putchar_rep('0', 1, info->acc);
-	if (num)
+	//if (num)
+	if (1)
 	{
 		if (num < 0)
 			ft_putnbr_fd(-num, 1);

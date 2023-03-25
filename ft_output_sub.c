@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_sub.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:15:01 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:51:33 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 19:45:05 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	ft_get_putlen(t_flag *info, long num)
 	{
 		info->putlen = ft_get_digit(num, info->specifier);
 		if (info->acc <= info->putlen)
-			info->acc = (num == 0 && info->acc);
+			info->acc = (num == 0 && info->acc > 0);
+			//info->acc = (num == 0 && info->acc);
 		else
 			info->acc = info->acc - info->putlen;
 		info->putlen += info->acc + (num < 0);
