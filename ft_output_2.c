@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:26:39 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 13:17:15 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:46:26 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,13 @@ void	ft_if_num_zero(t_flag *info)
 
 void	ft_pointer_print(va_list *arg, t_flag *info)
 {
-	unsigned long long	num;
+	long	num;
 
-	num = (unsigned long long)va_arg(*arg, void *);
-//	printf("\n----------\n");
-//	printf("num=%llx\n", num);
-//	printf("----------\n");
-//	printf("\n----------\n");
-//	printf("putnbr_base num=");
-//	ft_putnbr_base_long(num, "0123456789abcdef");
-//	printf("----------\n");
+	num = (long)va_arg(*arg, void *);
 	if (num == 0)
 		ft_if_num_zero(info);
 	else
 		ft_get_putlen(info, num);
-//	printf("\n----------\n");
-//	printf("info->putlen=%d\n", info->putlen);
-//	printf("----------\n");
 	if (!info->flag[0] && !info->flag[1])
 		ft_putchar_rep(' ', 1, info->field);
 	write(1, "0x", 2);
