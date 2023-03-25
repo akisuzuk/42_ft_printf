@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_operation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 23:08:49 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/24 21:17:32 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ int	main(void)
 	write(1, "\n", 1);
 	// 幅指定なしの場合は実装できてそう(改定後の今の課題なら必須パートはクリアか)
 
+	// テストケースとの整合チェック
+	printf("-----s chack-----\n");
+	printf(" NULL [%s] NULL \n", NULL);
+	ft_printf(" NULL [%s] NULL \n", NULL);
+
+	printf("-----s chack-----\n");
+	printf(" NULL [%s] NULL \n", NULL);
+	ft_printf(" NULL [%s] NULL \n", NULL);
+	
 	// 幅指定ありの場合が怪しいのでチェック...
 	num = ft_printf("xxx[%4.3d]yyy[%s]\n", 5, "def");
 	num = ft_printf("xxx[%4.3d]yyy[%s]\n", 12345, "def");
