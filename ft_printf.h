@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 21:34:30 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 13:14:36 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 void	ft_putnbr_fd(int n, int fd);
 
-void	ft_putnbr_base(int nbr, char *base);
+void	ft_putnbr_base_long(long nbr, char *base);
 
 void	ft_putchar_rep(char c, int fd, int rep);
 int		ft_get_digit(int num, int base);

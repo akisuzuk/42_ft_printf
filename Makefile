@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 23:05:50 by akisuzuk          #+#    #+#              #
-#    Updated: 2023/03/23 15:33:51 by akisuzuk         ###   ########.fr        #
+#    Updated: 2023/03/25 13:14:14 by akisuzuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS = 	ft_printf.c \
 		ft_output_1.c \
 		ft_output_2.c \
 		ft_output_sub.c \
-		ft_putnbr_base.c \
+		ft_putnbr_base_long.c \
 		./srcs/ft_isalpha.c \
 		./srcs/ft_isdigit.c \
 		./srcs/ft_isalnum.c \

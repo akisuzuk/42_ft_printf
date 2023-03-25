@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_base_long.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 09:37:03 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 11:19:52 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 13:28:46 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,39 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void	output(int i, char *base, long int *nummem)
+static void	output(int i, char *base, long *nummem)
 {
-	while (i >= 0)
+	//while (i >= 0)
+	while (i > 0)
 	{
 		write(1, &base[nummem[i - 1]], 1);
 		i--;
 	}
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base_long(long nbr, char *base)
 {
-	long int	lnbr;
-	long int	basenum;
-	long int	nummem[30];
-	long int	i;
+//	long int	lnbr;
+//	long int	basenum;
+//	long int	nummem[30];
+//	long int	i;
+	long	basenum;
+	long	nummem[30];
+	int		i;
 
-	lnbr = (long int)nbr;
-	if (lnbr < 0)
+	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		lnbr *= -1;
+		nbr *= -1;
 	}
 	basenum = 0;
 	while (base[basenum] != '\0')
 		basenum++;
 	i = 0;
-	while (lnbr > 0)
+	while (nbr > 0)
 	{
-		nummem[i] = lnbr % basenum;
-		lnbr /= basenum;
+		nummem[i] = nbr % basenum;
+		nbr /= basenum;
 		i++;
 	}
 	output(i, base, nummem);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:26:39 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 22:49:06 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 13:17:15 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	ft_unsigned_print(va_list *arg, t_flag *info)
 	if (num)
 	{
 		if (info->specifier == 5)
-			ft_putnbr_base(num, "0123456789");
+			ft_putnbr_base_long(num, "0123456789");
 		else if (info->specifier == 6)
-			ft_putnbr_base(num, "0123456789abcdef");
+			ft_putnbr_base_long(num, "0123456789abcdef");
 		else
-			ft_putnbr_base(num, "0123456789ABCDEF");
+			ft_putnbr_base_long(num, "0123456789ABCDEF");
 	}
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
@@ -96,10 +96,20 @@ void	ft_pointer_print(va_list *arg, t_flag *info)
 	unsigned long long	num;
 
 	num = (unsigned long long)va_arg(*arg, void *);
+//	printf("\n----------\n");
+//	printf("num=%llx\n", num);
+//	printf("----------\n");
+//	printf("\n----------\n");
+//	printf("putnbr_base num=");
+//	ft_putnbr_base_long(num, "0123456789abcdef");
+//	printf("----------\n");
 	if (num == 0)
 		ft_if_num_zero(info);
 	else
 		ft_get_putlen(info, num);
+//	printf("\n----------\n");
+//	printf("info->putlen=%d\n", info->putlen);
+//	printf("----------\n");
 	if (!info->flag[0] && !info->flag[1])
 		ft_putchar_rep(' ', 1, info->field);
 	write(1, "0x", 2);
@@ -108,7 +118,7 @@ void	ft_pointer_print(va_list *arg, t_flag *info)
 	else
 		ft_putchar_rep('0', 1, info->acc);
 	if (num)
-		ft_putnbr_base(num, "0123456789abcdef");
+		ft_putnbr_base_long(num, "0123456789abcdef");
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 }
