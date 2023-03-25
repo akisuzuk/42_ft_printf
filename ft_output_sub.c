@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_sub.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:15:01 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/23 23:04:16 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:51:33 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	ft_putchar_rep(char c, int fd, int rep)
 	}
 }
 
-int	ft_get_digit(int num, int base)
+int	ft_get_digit(long num, int base)
 {
-	int	digit;
-	int	basenum;
+	int		digit;
+	long	basenum;
 
 	if (num == 0)
 		return (1);
@@ -44,21 +44,21 @@ int	ft_get_digit(int num, int base)
 	return (digit);
 }
 
-void	if_puxx(t_flag *info, int num)
+void	if_puxx(t_flag *info, long num)
 {
 	info->putlen = ft_get_digit(num, info->specifier);
 	if (info->acc <= info->putlen)
 		info->acc = (num == 0 && info->acc);
 	else
 		info->acc = info->acc - info->putlen;
-	info->putlen += info->acc + 2 * (num != 0 && info->specifier != 2);
+	info->putlen += info->acc + 2 * (num != 0 && info->specifier != 5);
 	if (info->field <= info->putlen)
 		info->field = 0;
 	else
 		info->field = info->field - info->putlen;
 }
 
-void	ft_get_putlen(t_flag *info, int num)
+void	ft_get_putlen(t_flag *info, long num)
 {
 	info->flag[1] = (info->flag[1] && info->acc == -1);
 	if (info->specifier == 3 || info->specifier == 4)

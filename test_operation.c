@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/24 21:17:32 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:42:39 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,28 @@ int	main(void)
 	// 幅指定なしの場合は実装できてそう(改定後の今の課題なら必須パートはクリアか)
 
 	// テストケースとの整合チェック
-	printf("-----s chack-----\n");
-	printf(" NULL [%s] NULL \n", NULL);
-	ft_printf(" NULL [%s] NULL \n", NULL);
+	//printf("-----s chack-----\n");
+	//printf(" NULL [%s] NULL \n", NULL);
+	//ft_printf(" NULL [%s] NULL \n", NULL);
 
-	printf("-----s chack-----\n");
-	printf(" NULL [%s] NULL \n", NULL);
-	ft_printf(" NULL [%s] NULL \n", NULL);
+	//printf("-----s chack-----\n");
+	//printf(" NULL [%s] NULL \n", NULL);
+	//ft_printf(" NULL [%s] NULL \n", NULL);
+	
+	printf("-----p chack-----\n");
+	int *p;
+	int origin;
+	int myfunc;
+
+	*p = 42;
+	origin = printf("%p\n", NULL);
+	myfunc = ft_printf("%p\n", NULL);
+	printf("origin ret = %d\n", origin);
+	printf("myfunc ret = %d\n", myfunc);
 	
 	// 幅指定ありの場合が怪しいのでチェック...
-	num = ft_printf("xxx[%4.3d]yyy[%s]\n", 5, "def");
-	num = ft_printf("xxx[%4.3d]yyy[%s]\n", 12345, "def");
+	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 5, "def");
+	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 12345, "def");
 
 
 
