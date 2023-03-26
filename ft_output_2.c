@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:26:39 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:46:26 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:22:57 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,7 @@ void	ft_int_print(va_list *arg, t_flag *info)
 		ft_putchar_rep('0', 1, info->acc + info->field);
 	else
 		ft_putchar_rep('0', 1, info->acc);
-	if (num)
-	{
-		if (num < 0)
-			ft_putnbr_fd(-num, 1);
-		else
-			ft_putnbr_fd(num, 1);
-	}
+	ft_putnbr_fd_non_minus(num, 1);
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 }

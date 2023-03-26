@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:12:07 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:42:24 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_flag
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd_non_minus(int n, int fd);
 
 void	ft_putnbr_base_long(long nbr, char *base);
 

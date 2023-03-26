@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:15:01 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:51:33 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:50:50 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,21 @@ void	if_puxx(t_flag *info, long num)
 {
 	info->putlen = ft_get_digit(num, info->specifier);
 	if (info->acc <= info->putlen)
-		info->acc = (num == 0 && info->acc);
+		info->acc = (num == 0 && info->acc > 0);
+		//info->acc = (num == 0 && info->acc);
 	else
 		info->acc = info->acc - info->putlen;
+//	write(1, "acc=", 4);
+//	ft_putnbr_fd(info->acc, 1);
+//	write(1, "\n", 1);
 	info->putlen += info->acc + 2 * (num != 0 && info->specifier != 5);
 	if (info->field <= info->putlen)
 		info->field = 0;
 	else
 		info->field = info->field - info->putlen;
+//	write(1, "putlen=", 7);
+//	ft_putnbr_fd(info->putlen, 1);
+//	write(1, "\n", 1);
 }
 
 void	ft_get_putlen(t_flag *info, long num)
@@ -65,7 +72,8 @@ void	ft_get_putlen(t_flag *info, long num)
 	{
 		info->putlen = ft_get_digit(num, info->specifier);
 		if (info->acc <= info->putlen)
-			info->acc = (num == 0 && info->acc);
+			info->acc = (num == 0 && info->acc > 0);
+			//info->acc = (num == 0 && info->acc);
 		else
 			info->acc = info->acc - info->putlen;
 		info->putlen += info->acc + (num < 0);

@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 16:42:39 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:40:33 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,26 @@ int	main(void)
 {
 	int num;
 
-	num = ft_printf("char[%c] string [%s] pointer[%p] int[%d] int[%i]\n", 'a', "abc", "ptr", -123, -456);
-	num = ft_printf("decimal[%u] hexa [%x] HEXA[%X] percent[%%]\n", 31, 31, 31);
-	write(1, "\n", 1);
 	// 幅指定なしの場合は実装できてそう(改定後の今の課題なら必須パートはクリアか)
 
-	// テストケースとの整合チェック
-	//printf("-----s chack-----\n");
-	//printf(" NULL [%s] NULL \n", NULL);
-	//ft_printf(" NULL [%s] NULL \n", NULL);
-
-	//printf("-----s chack-----\n");
-	//printf(" NULL [%s] NULL \n", NULL);
-	//ft_printf(" NULL [%s] NULL \n", NULL);
-	
+	/*
 	printf("-----p chack-----\n");
-	int *p;
+	//int *p;
 	int origin;
 	int myfunc;
 
-	*p = 42;
-	origin = printf("%p\n", NULL);
-	myfunc = ft_printf("%p\n", NULL);
+	//*p = 42;
+	origin = printf("%d\n", 0);
+	myfunc = ft_printf("%d\n", 0);
 	printf("origin ret = %d\n", origin);
 	printf("myfunc ret = %d\n", myfunc);
-	
+	*/
+		
+	printf("-----u chack-----\n");
+	printf("[%u]", 0);
+	ft_printf("[%u]", 0);
+
+
 	// 幅指定ありの場合が怪しいのでチェック...
 	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 5, "def");
 	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 12345, "def");
