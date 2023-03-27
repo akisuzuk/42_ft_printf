@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:35:53 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:42:24 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 22:14:57 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ int		ft_isdigit(int c);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putnbr_fd_non_minus(int n, int fd);
 
-void	ft_putnbr_base_long(long nbr, char *base);
+void	ft_putnbr_base_ull(unsigned long long nbr, char *base);
 
 void	ft_putchar_rep(char c, int fd, int rep);
-int		ft_get_digit(long num, int base);
-void	ft_get_putlen(t_flag *info, long num);
+int		ft_get_digit(long long num_ll, unsigned long long num_ull, int base);
+void	ft_get_putlen(t_flag *info, long long num_ll, \
+						unsigned long long num_ull);
 
 void	ft_print_percent(t_flag *info);
 void	ft_unsigned_print(va_list *arg, t_flag *info);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd_non_minus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:53:51 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:16:37 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 20:10:07 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void	ft_putnbr_fd_non_minus(int n, int fd)
 		write(fd, "0", 1);
 		return ;
 	}
-	//if (n < 0)
-	//	write(fd, "-", 1);
 	num_len = count_len(n);
 	base = ft_pow(num_len - 1);
 	while (num_len)

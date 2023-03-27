@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:26:39 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:22:57 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 22:02:44 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,19 @@ void	ft_unsigned_print(va_list *arg, t_flag *info)
 	unsigned int	num;
 
 	num = va_arg(*arg, unsigned int);
-	ft_get_putlen(info, num);
+	ft_get_putlen(info, 0, num);
 	if (!info->flag[0] && !info->flag[1])
 		ft_putchar_rep(' ', 1, info->field);
 	if (info->flag[1] && !info->flag[0])
 		ft_putchar_rep('0', 1, info->acc + info->field);
 	else
 		ft_putchar_rep('0', 1, info->acc);
-	if (num)
-	{
-		if (info->specifier == 5)
-			ft_putnbr_base_long(num, "0123456789");
-		else if (info->specifier == 6)
-			ft_putnbr_base_long(num, "0123456789abcdef");
-		else
-			ft_putnbr_base_long(num, "0123456789ABCDEF");
-	}
+	if (info->specifier == 5)
+		ft_putnbr_base_ull(num, "0123456789");
+	else if (info->specifier == 6)
+		ft_putnbr_base_ull(num, "0123456789abcdef");
+	else
+		ft_putnbr_base_ull(num, "0123456789ABCDEF");
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 }
@@ -60,7 +57,7 @@ void	ft_int_print(va_list *arg, t_flag *info)
 	int	num;
 
 	num = va_arg(*arg, int);
-	ft_get_putlen(info, num);
+	ft_get_putlen(info, num, 0);
 	if (!info->flag[0] && !info->flag[1])
 		ft_putchar_rep(' ', 1, info->field);
 	if (num < 0)
@@ -87,13 +84,13 @@ void	ft_if_num_zero(t_flag *info)
 
 void	ft_pointer_print(va_list *arg, t_flag *info)
 {
-	long	num;
+	unsigned long long	num;
 
-	num = (long)va_arg(*arg, void *);
+	num = (unsigned long long)va_arg(*arg, void *);
 	if (num == 0)
 		ft_if_num_zero(info);
 	else
-		ft_get_putlen(info, num);
+		ft_get_putlen(info, 0, num);
 	if (!info->flag[0] && !info->flag[1])
 		ft_putchar_rep(' ', 1, info->field);
 	write(1, "0x", 2);
@@ -102,7 +99,7 @@ void	ft_pointer_print(va_list *arg, t_flag *info)
 	else
 		ft_putchar_rep('0', 1, info->acc);
 	if (num)
-		ft_putnbr_base_long(num, "0123456789abcdef");
+		ft_putnbr_base_ull(num, "0123456789abcdef");
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);
 }

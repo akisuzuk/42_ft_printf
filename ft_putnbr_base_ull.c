@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_long.c                              :+:      :+:    :+:   */
+/*   ft_putnbr_base_ull.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 09:37:03 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/25 13:28:46 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 21:44:45 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void	output(int i, char *base, long *nummem)
+static void	output(int i, char *base, unsigned long long *nummem)
 {
-	//while (i >= 0)
 	while (i > 0)
 	{
 		write(1, &base[nummem[i - 1]], 1);
@@ -24,16 +23,17 @@ static void	output(int i, char *base, long *nummem)
 	}
 }
 
-void	ft_putnbr_base_long(long nbr, char *base)
+void	ft_putnbr_base_ull(unsigned long long nbr, char *base)
 {
-//	long int	lnbr;
-//	long int	basenum;
-//	long int	nummem[30];
-//	long int	i;
-	long	basenum;
-	long	nummem[30];
-	int		i;
+	unsigned long long	basenum;
+	unsigned long long	nummem[30];
+	int					i;
 
+	if (nbr == 0)
+	{
+		write(1, "0", 1);
+		return ;
+	}
 	if (nbr < 0)
 	{
 		write(1, "-", 1);

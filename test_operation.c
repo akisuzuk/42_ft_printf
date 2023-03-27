@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_operation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:40:33 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 21:25:49 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,40 +51,31 @@
 //int main(int argc, char const * argv[])
 int	main(void)
 {
-	int num;
+	int num1;
+	int num2;
 
 	// 幅指定なしの場合は実装できてそう(改定後の今の課題なら必須パートはクリアか)
 
-	/*
+
 	printf("-----p chack-----\n");
 	//int *p;
 	int origin;
 	int myfunc;
 
 	//*p = 42;
-	origin = printf("%d\n", 0);
-	myfunc = ft_printf("%d\n", 0);
+	origin = printf("%p\n", (void *)-15);
+	myfunc = ft_printf("%p\n", (void *)-15);
 	printf("origin ret = %d\n", origin);
 	printf("myfunc ret = %d\n", myfunc);
-	*/
-		
-	printf("-----u chack-----\n");
-	printf("[%u]", 0);
-	ft_printf("[%u]", 0);
-
 
 	// 幅指定ありの場合が怪しいのでチェック...
-	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 5, "def");
-	//num = ft_printf("xxx[%4.3d]yyy[%s]\n", 12345, "def");
-
-
-
-	//write(1, "\n", 1);
-	//write(1, "num=", 4);
-	//ft_putnbr_fd(num, 1);
-
-	//printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
-	//ft_printf("c1=%c, c2=%c, i1=%d, i2=%d\n", 'a', 'z', 1, 9);
+	/*
+	printf("\n-----field acc check-----\n");
+	num1 = printf("[%10.5s]\n", "abcde");
+	num2 = ft_printf("[%10.5s]\n", "abcde");
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	*/
 	return 0;
 }
 

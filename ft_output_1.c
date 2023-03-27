@@ -3,19 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:12:51 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 22:47:51 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_string_print_2(t_flag *info, char *s)
+{
+	int		n;
+
+	if (info->putlen > info->acc)
+		n = info->acc;
+	else
+		n = info->putlen;
+	write(1, s, n);
+	if (info->flag[0])
+		ft_putchar_rep(' ', 1, info->field);
+}
+
 void	ft_string_print(va_list *arg, t_flag *info)
 {
 	char	*s;
-	int		n;
 
 	s = (char *)va_arg(*arg, char *);
 	if (s == NULL)
@@ -34,13 +46,7 @@ void	ft_string_print(va_list *arg, t_flag *info)
 		else
 			ft_putchar_rep('0', 1, info->field);
 	}
-	if (info->putlen > info->acc)
-		n = info->acc;
-	else
-		n = info->putlen;
-	write(1, s, n);
-	if (info->flag[0])
-		ft_putchar_rep(' ', 1, info->field);
+	ft_string_print_2(info, s);
 }
 
 void	ft_char_print(va_list *arg, t_flag *info)
