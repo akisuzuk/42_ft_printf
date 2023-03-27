@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/27 21:25:49 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 23:07:29 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,29 @@ int	main(void)
 	int myfunc;
 
 	//*p = 42;
-	origin = printf("%p\n", (void *)-15);
-	myfunc = ft_printf("%p\n", (void *)-15);
-	printf("origin ret = %d\n", origin);
-	printf("myfunc ret = %d\n", myfunc);
+	//origin = printf("%p\n", (void *)-15);
+	//myfunc = ft_printf("%p\n", (void *)-15);
+	//printf("origin ret = %d\n", origin);
+	//printf("myfunc ret = %d\n", myfunc);
 
 	// 幅指定ありの場合が怪しいのでチェック...
-	/*
+
 	printf("\n-----field acc check-----\n");
 	num1 = printf("[%10.5s]\n", "abcde");
 	num2 = ft_printf("[%10.5s]\n", "abcde");
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
-	*/
+
+	num1 = printf("[%3s]\n", "abcde");
+	num2 = ft_printf("[%3s]\n", "abcde");
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+
+	num1 = printf("[%10.5d]\n", -12345);
+	num2 = ft_printf("[%10.5d]\n", -12345);
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+
 	return 0;
 }
 
