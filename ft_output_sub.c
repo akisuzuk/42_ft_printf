@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_sub.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:15:01 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/26 15:50:50 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/27 11:56:10 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ void	if_puxx(t_flag *info, long num)
 {
 	info->putlen = ft_get_digit(num, info->specifier);
 	if (info->acc <= info->putlen)
-		info->acc = (num == 0 && info->acc > 0);
-		//info->acc = (num == 0 && info->acc);
+		//info->acc = (num == 0 && info->acc > 0);
+		info->acc = (num == 0 && info->acc);
 	else
 		info->acc = info->acc - info->putlen;
 //	write(1, "acc=", 4);
 //	ft_putnbr_fd(info->acc, 1);
 //	write(1, "\n", 1);
-	info->putlen += info->acc + 2 * (num != 0 && info->specifier != 5);
+	//info->putlen += info->acc + 2 * (num != 0 && info->specifier != 5);
+	info->putlen += info->acc + 2 * (num != 0 && info->specifier == 2);
 	if (info->field <= info->putlen)
 		info->field = 0;
 	else
