@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:30:32 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/28 15:27:44 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:14:17 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,16 @@ void	ft_proc_per(const char **p, const char **fmt, int *i, va_list *arg)
 
 	(*fmt)++;
 	ft_init_flag(&info);
-	while (1)
+	while (**fmt == '-' || **fmt == '0')
 	{
 		if (**fmt == '-')
-		{
 			info.flag[0] = 1;
-			(*fmt)++;
-		}
 		if (**fmt == '0')
-		{
 			info.flag[1] = 1;
-			(*fmt)++;
-		}
-		if (**fmt != '-' && **fmt != '0')
-			break ;
-	}
+		(*fmt)++;
+	}	
+	if (info.flag[0] == 1 && info.flag[1] == 1)
+		info.flag[1] = -1;
 	info.field = ft_substr_to_num(fmt, arg, 0, &info);
 	if (**fmt == '.')
 	{

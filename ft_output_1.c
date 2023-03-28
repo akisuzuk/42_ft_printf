@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/28 15:23:40 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/28 21:14:20 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,12 @@ void	ft_string_print(va_list *arg, t_flag *info)
 	if (info->acc < 0)
 		info->acc = INT_MAX;
 	info->putlen = (int)ft_strlen(s);
+	if (info->putlen > info->acc)
+		info->putlen = info->acc;
 	if (info->field <= info->putlen)
 		info->field = 0;
 	else
 		info->field -= info->putlen;
-	// write(1, "flag0=", 6);
-	// ft_putnbr_fd(info->flag[0], 1);
-	// write(1, "\n", 1);
-	// write(1, "flag1=", 6);
-	// ft_putnbr_fd(info->flag[1], 1);
-	// write(1, "\n", 1);
 	if (!info->flag[0])
 	{
 		if (info->flag[1])
