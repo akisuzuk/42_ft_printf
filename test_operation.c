@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/28 14:20:04 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:28:49 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ int	main(void)
 
 	num1 = printf("[%010.5s]\n", "abcde");
 	num2 = ft_printf("[%010.5s]\n", "abcde");
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	printf("----------------\n");
+	
+	num1 = printf("[%-010.5s]\n", "abcde");
+	num2 = ft_printf("[%-010.5s]\n", "abcde");
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
 	printf("----------------\n");
