@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/27 22:47:51 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:19:09 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	ft_string_print(va_list *arg, t_flag *info)
 	if (!info->flag[0])
 	{
 		if (info->flag[1])
-			ft_putchar_rep(' ', 1, info->field);
-		else
 			ft_putchar_rep('0', 1, info->field);
+		else
+			ft_putchar_rep(' ', 1, info->field);
 	}
 	ft_string_print_2(info, s);
 }
