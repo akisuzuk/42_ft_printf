@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_output_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:28:55 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/28 21:14:20 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:41:09 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ void	ft_char_print(va_list *arg, t_flag *info)
 	else
 		info->field -= info->putlen;
 	if (!info->flag[0])
-		ft_putchar_rep(' ', 1, info->field);
+	{
+		if (info->flag[1])
+			ft_putchar_rep('0', 1, info->field);
+		else
+			ft_putchar_rep(' ', 1, info->field);
+	}
 	write(1, &c, 1);
 	if (info->flag[0])
 		ft_putchar_rep(' ', 1, info->field);

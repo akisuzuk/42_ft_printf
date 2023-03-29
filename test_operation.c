@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_operation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/28 21:31:10 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:45:15 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(void)
 	num2 = ft_printf("[%010.5s]\n", "abcde");
 	printf("---test 1-------------\n");
 	printf("origin ret = %d\n", num1);
-	printf("myfunc ret = %d\n", num2);	
+	printf("myfunc ret = %d\n", num2);
 	printf("---test 2-------------\n");
 	num1 = printf("[%-010.3s]\n", "abcde");
 	num2 = ft_printf("[%-010.3s]\n", "abcde");
@@ -83,7 +83,11 @@ int	main(void)
 	num1 = printf("[%3s]\n", "abcde");
 	num2 = ft_printf("[%3s]\n", "abcde");
 	printf("origin ret = %d\n", num1);
-	printf("myfunc ret = %d\n", num2);
+	printf("---test 5.1-------------\n");
+	num1 = printf("[%3s]\n", NULL);
+	num2 = ft_printf("[%3s]\n", NULL);
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);printf("myfunc ret = %d\n", num2);
 
 	printf("---test 6-------------\n");
 	num1 = printf("[%10.3d]\n", -12345);
@@ -110,7 +114,7 @@ int	main(void)
 	num2 = ft_printf("[%-010.3d]\n", -12345);
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
-	
+
 	printf("---test 9-------------\n");
 	num1 = printf("[%20.3p]\n", "42");
 	num2 = ft_printf("[%20.3p]\n", "42");
@@ -125,13 +129,13 @@ int	main(void)
 	num1 = printf("[%-020.3p]\n", "42");
 	num2 = ft_printf("[%-020.3p]\n", "42");
 	printf("origin ret = %d\n", num1);
-	printf("myfunc ret = %d\n", num2);	
+	printf("myfunc ret = %d\n", num2);
 	printf("---test 12-------------\n");
 	num1 = printf("[%p]\n", "42");
 	num2 = ft_printf("[%p]\n", "42");
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
-	
+
 	printf("---test 13-------------\n");
 	num1 = printf("[%10.3i]\n", -12345);
 	num2 = ft_printf("[%10.3i]\n", -12345);
@@ -147,7 +151,7 @@ int	main(void)
 	num2 = ft_printf("[%-010.3i]\n", -12345);
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
-	
+
 	printf("---test 16-------------\n");
 	num1 = printf("[%10.3u]\n", -12345);
 	num2 = ft_printf("[%10.3u]\n", -12345);
@@ -200,6 +204,31 @@ int	main(void)
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
 
+	printf("---test 22-------------\n");
+	num1 = printf("[%-10.3c]\n", 'x');
+	num2 = ft_printf("[%-10.3c]\n", 'x');
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	printf("---test 23-------------\n");
+	num1 = printf("[%10.3c]\n", 'x');
+	num2 = ft_printf("[%10.3c]\n", 'x');
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	printf("---test 24-------------\n");
+	num1 = printf("[%03c]\n", 'x');
+	num2 = ft_printf("[%03c]\n", 'x');
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	printf("---test 25-------------\n");
+	num1 = printf("[%03c]\n", NULL);
+	num2 = ft_printf("[%03c]\n", NULL);
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
+	printf("---test 26-------------\n");
+	num1 = printf("[%03%]\n", NULL);
+	num2 = ft_printf("[%03%]\n", NULL);
+	printf("origin ret = %d\n", num1);
+	printf("myfunc ret = %d\n", num2);
 	return 0;
 }
 
