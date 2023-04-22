@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: akisuzuk <akisuzuk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 23:05:50 by akisuzuk          #+#    #+#              #
-#    Updated: 2023/03/27 21:44:59 by akisuzuk         ###   ########.fr        #
+#    Updated: 2023/04/01 13:26:49 by akisuzuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,5 +80,7 @@ fclean: clean
 		rm -f $(NAME)
 
 re: fclean all
+
+bonus:	all
 
 .PHONY: all clean fclean re
