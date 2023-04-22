@@ -6,7 +6,7 @@
 /*   By: akisuzuk <akisuzuk@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:59:23 by akisuzuk          #+#    #+#             */
-/*   Updated: 2023/03/29 19:45:15 by akisuzuk         ###   ########.fr       */
+/*   Updated: 2023/04/22 10:18:22 by akisuzuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ int	main(void)
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
 	printf("---test 12-------------\n");
-	num1 = printf("[%p]\n", "42");
-	num2 = ft_printf("[%p]\n", "42");
+	num1 = printf("[%p]\n", NULL);
+	num2 = ft_printf("[%p]\n", NULL);
 	printf("origin ret = %d\n", num1);
 	printf("myfunc ret = %d\n", num2);
 
